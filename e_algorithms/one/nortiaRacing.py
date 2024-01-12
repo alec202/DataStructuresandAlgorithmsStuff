@@ -33,11 +33,11 @@ if __name__ == "__main__":
         dist2 = int(entry_data[1]) # distance of second button
         num_pushes = int(entry_data[2]) # number of pushes for this test case
         nortiaRacing(dist1, dist2, num_pushes)
-        for num in sorted(tracked):
-            output_arr.append(num)
-        output_arr.append("\n")
+        sorted_tracked = sorted(tracked)
+        for i in range(0, len(sorted_tracked)):
+            sorted_tracked[i] = str(sorted_tracked[i])
+        output_arr.append(sorted_tracked)
         tracked = []
 
-    for item in output_arr:
-        print(item, end=" ") if item != "\n" else print()
-
+    for arr in output_arr:
+        print(" ".join(arr))
