@@ -8,21 +8,20 @@ must be pressed (n). You should come up with the set of all possible distances t
 exactly n presses
 """
 
-tracked = []
 
-def nortiaRacing(dist1, dist2, num_pushes):
-    nortiaRacingHelper(dist1, dist2, num_pushes, 0)
-    return
+def nortiaRacing(dist1: int, dist2: int, num_pushes: int) -> str:
+    dists = []
+    for i in range(0, num_pushes + 1):
+        dis = (dist1 * i) + (dist2 * (num_pushes - i))
+        dists.append(dis) if dis not in dists else None
+    dists = sorted(dists)
+    for ind in range(len(dists)):
+        dists[ind] = str(dists[ind])
+    return dists
 
-def nortiaRacingHelper(dist1: int, dist2: int, num_pushes: int, total:int) -> str:
-    if num_pushes == 0:
-        if total not in tracked:
-            tracked.append(total)
-        return
-    else:
-        nortiaRacingHelper(dist1, dist2, num_pushes - 1, total + dist1)
-        nortiaRacingHelper(dist1, dist2, num_pushes - 1, total + dist2)
-        return
+
+
+
 
 if __name__ == "__main__":
     num_cases = int(input()) # num times to test data
@@ -32,10 +31,7 @@ if __name__ == "__main__":
         dist1 = int(entry_data[0]) # distance of first button
         dist2 = int(entry_data[1]) # distance of second button
         num_pushes = int(entry_data[2]) # number of pushes for this test case
-        nortiaRacing(dist1, dist2, num_pushes)
-        sorted_tracked = sorted(tracked)
-        for i in range(0, len(sorted_tracked)):
-            sorted_tracked[i] = str(sorted_tracked[i])
+        sorted_tracked = nortiaRacing(dist1, dist2, num_pushes)
         output_arr.append(sorted_tracked)
         tracked = []
 
