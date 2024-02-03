@@ -43,9 +43,52 @@ spent an average of (3+7+17)/3 = 9 seconds per job, which is what you would outp
 
 '''
 
+import heapq as hq
+
+def crack_code_avg(all_reqs: list[tuple, tuple], n: int) -> int:
+    # sort requests based on order received
+    all_reqs.sort()
+    curr_time, avg_sum, num_cracks, i = 0, 0, 0, 0
+    order_in_crack_length = []
+    while num_cracks != n and i < len(all_reqs):
+        if all_reqs[i][0] > curr_time:
+            curr_time = all_reqs[i][0]
+        while i < len(all_reqs) and all_reqs[i][0] <= curr_time :
+            # We will use below to make the heap that will be based on how fast it is to crack the message.
+            # heapq builds a min heap though, we want the fastest times, so in reality we want a max heap. We can
+            # Still use heapq to make a max heap if we multiple the time_to_crack value (index 0) by negative 1
+            order_in_crack_length.append((-all_reqs[i][1], all_reqs[i][0]))
+            i += 1
+        hq.heapify(order_in_crack_length)
+        cracked = hq.heappop(order_in_crack_length)
+        curr_time += cracked[0] * -1
+        avg_sum += (curr_time - cracked[1])
+        num_cracks += 1
+
+    return avg_sum // n
+
+
+
 
 
 if __name__ == "__main__":
     # First get the number of job requests the agent will receive
     num_job_requests = int(input())
+    # Could use heap to get the next message we should solve.
+    # Overall Algorithm would become nlg(n) if we pop off elements from the heap as we use them.
+    # Max time is 10^9. Could we just replace that value with 10^10? Or are we required to
+    # do popping off the heap?
+    # we're going to use a heap so we will need a list.
+    all_reqs = []
+    # Get all of the inputs
+
+    for i in range(0, num_job_requests):
+        # convert input to tuple
+        req = input().strip().partition(" ")
+        all_reqs.append((int(req[0]), int(req[2])))
+    # list of tuples storing all the requests successfully created.
+    print(crack_code_avg(all_reqs, num_job_requests))
+
+
+
 
