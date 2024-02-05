@@ -171,45 +171,62 @@ Wrong!
 
 """
 
-# Perhaps make removal O(1) and make the vector
-# as big as the entire number of inputs we're expecting
-# might help to prevent the worst case where appending is O(n)
-# instead of O(1) because we had to resize the vector
+# # Perhaps make removal O(1) and make the vector
+# # as big as the entire number of inputs we're expecting
+# # might help to prevent the worst case where appending is O(n)
+# # instead of O(1) because we had to resize the vector
+#
+# from statistics import median
+# def blending_in():
+#     n = int(input())
+#     func = {"a": add_num, 'r': rem_num}
+#     traffic_dict = {}
+#     traff_list = []
+#     for i in range(n):
+#         command = input().partition(" ")
+#         action, num = (command[0], int(command[2]))
+#         print(func[action](num, traffic_dict, traff_list))
+#
+# def add_num(num, traffict_dict, traff_list):
+#     if num in traffict_dict:
+#         traffict_dict[num] += 1
+#     else:
+#         traffict_dict[num] = 1
+#     traff_list.append(num)
+#     return median(traff_list)
+#
+# def rem_num(num, traffic_dict, traff_list):
+#     r = traffic_dict.get(num, 'f')
+#     if r == 'f':
+#         return 'Wrong!'
+#     else:
+#         traffic_dict[num] -= 1
+#         if traffic_dict[num] <= 0:
+#             del traffic_dict[num]
+#         # make remove o(1) since this is an unsorted array
+#         ind = traff_list.index(num)
+#         traff_list.pop(ind)
+#         if len(traff_list) == 0:
+#             return 'Wrong!'
+#         else:
+#             return median(traff_list)
+#
+#
 
-from statistics import median
-def blending_in():
-    n = int(input())
-    func = {"a": add_num, 'r': rem_num}
-    traffic_dict = {}
-    traff_list = []
-    for i in range(n):
-        command = input().partition(" ")
-        action, num = (command[0], int(command[2]))
-        print(func[action](num, traffic_dict, traff_list))
+import heapq as hq
+class Median:
+    def __init__(self):
+        self.smaller = []
+        self.bigger = []
 
-def add_num(num, traffict_dict, traff_list):
-    if num in traffict_dict:
-        traffict_dict[num] += 1
-    else:
-        traffict_dict[num] = 1
-    traff_list.append(num)
-    return median(traff_list)
+    def insert(self, ele):
+        hq.heappush(self.smaller, ele)
 
-def rem_num(num, traffic_dict, traff_list):
-    r = traffic_dict.get(num, 'f')
-    if r == 'f':
-        return 'Wrong!'
-    else:
-        traffic_dict[num] -= 1
-        if traffic_dict[num] <= 0:
-            del traffic_dict[num]
-        # make remove o(1) since this is an unsorted array
-        ind = traff_list.index(num)
-        traff_list.pop(ind)
-        if len(traff_list) == 0:
-            return 'Wrong!'
-        else:
-            return median(traff_list)
+    def delete(self, ele):
+
+
+
+
 
 
 
