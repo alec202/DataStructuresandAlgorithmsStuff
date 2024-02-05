@@ -50,19 +50,27 @@ def crack_code_avg(all_reqs: list[tuple, tuple], n: int) -> int:
     all_reqs.sort()
     curr_time, avg_sum, num_cracks, i = 0, 0, 0, 0
     order_in_crack_length = []
-    while num_cracks != n and i < len(all_reqs):
-        if all_reqs[i][0] > curr_time:
+    hq.heapify(order_in_crack_length)
+    while num_cracks != n:
+        if i < len(all_reqs) and len(order_in_crack_length) == 0 and all_reqs[i][0] > curr_time:
             curr_time = all_reqs[i][0]
-        while i < len(all_reqs) and all_reqs[i][0] <= curr_time :
+            # If we are setting the time manually as what the current time is, then we don't want to then add
+            # what this time stamp is again, that would cause this first time stamp to be counted twice.
+            inc = False
+        else:
+            inc = True
+        while i < len(all_reqs) and all_reqs[i][0] <= curr_time:
             # We will use below to make the heap that will be based on how fast it is to crack the message.
             # heapq builds a min heap though, we want the fastest times, so in reality we want a max heap. We can
             # Still use heapq to make a max heap if we multiple the time_to_crack value (index 0) by negative 1
-            order_in_crack_length.append((-all_reqs[i][1], all_reqs[i][0]))
+            hq.heappush(order_in_crack_length, (all_reqs[i][1], all_reqs[i][0]))
             i += 1
-        hq.heapify(order_in_crack_length)
         cracked = hq.heappop(order_in_crack_length)
-        curr_time += cracked[0] * -1
-        avg_sum += (curr_time - cracked[1])
+        curr_time += cracked[0]
+        if inc:
+            avg_sum += (curr_time - cracked[1])
+        else:
+            avg_sum += cracked[0]
         num_cracks += 1
 
     return avg_sum // n
