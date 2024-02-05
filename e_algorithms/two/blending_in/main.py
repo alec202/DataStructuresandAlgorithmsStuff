@@ -171,6 +171,11 @@ Wrong!
 
 """
 
+# Perhaps make removal O(1) and make the vector
+# as big as the entire number of inputs we're expecting
+# might help to prevent the worst case where appending is O(n)
+# instead of O(1) because we had to resize the vector
+
 from statistics import median
 def blending_in():
     n = int(input())
