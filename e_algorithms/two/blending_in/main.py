@@ -213,14 +213,26 @@ Wrong!
 #
 #
 
-import heapq as hq
+from redBlackTree import *
+
 class Median:
     def __init__(self):
-        self.smaller = []
-        self.bigger = []
+        self.smaller = RedBlackTree()
+        self.bigger = RedBlackTree()
+
 
     def insert(self, ele):
-        hq.heappush(self.smaller, ele)
+        self.smaller.insert(ele)
+        if self.smaller.count > self.bigger.count + 1:
+            self.smaller.delete_node(self.smaller.)
+            self.bigger.add(ele)
+        elif self.bigger.count + 1 > self.smaller.count:
+            self.bigger.remove()
+            self.smaller.add(ele)
+
+
+    def median(self):
+
 
     def delete(self, ele):
 
