@@ -5,11 +5,12 @@ def main():
     sort = [0 for j in range(plans)]
     for i in range(reps):
         new = int(input())
-        for index in range(len(sort)):
-            if new > sort[index]:
-                sort.insert(index, new)
-                sort = sort[0:plans]
-                break
+        if new > sort[-1]:
+            for index in range(len(sort)):
+                if new > sort[index]:
+                    sort.insert(index, new)
+                    sort = sort[0:plans]
+                    break
     for val in sort:
         print(val)
 main()
