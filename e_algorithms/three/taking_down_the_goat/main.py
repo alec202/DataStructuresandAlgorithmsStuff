@@ -1,3 +1,67 @@
+"""
+PROBLEM DESCRIPTION:
+Taking down the Goat
+Agent Ω has found the Goat's underground base of operations, and he is now fleeing his underground mansion to the
+ surface of Mars. Ω needs to catch him there.
+
+There are N escape tubes to the surface, all in a line evenly-spaced 1 meter apart. The goat has rigged a subset of
+those tubes to explode, so Agent Ω needs to avoid those tubes or any other tubes even near them, if possible.
+Given a list of tubes set to explode, can you identify the distance of the tube furthest from the nearest explosion?
+
+Input Format
+
+The first line has two values: N (the number of tubes, labeled 0 through N-1) and
+K (the number of tubes set to explode). The next K values indicate the tube numbers that will explode. For example,
+if there are 100 tubes with tubes 10, 60, and 95 set to explode, then Agent Ω would take tube 35, which
+would be 25 meters away from the nearest exploding tube.
+
+Constraints
+
+1 ≤ N ≤ 109
+1 ≤ K ≤ 105
+0 ≤ explosion positions < N
+Output Format
+
+Output a single number indicating the farthest Agent Ω can be to the nearest exploding tube.
+
+Example 1
+Sample Input
+5 2
+0 4
+
+Sample Output
+2
+
+Explanation
+
+Five tubes are available (0, 1, 2, 3, 4), with explosions at tubes 0 and 4.
+If Agent Ω attempts to take tube 2, she will be two meters away from any explosion, which is the best possible.
+
+Example 2
+Sample Input
+6 6
+0 1 2 4 3 5
+
+Sample Output
+0
+
+Example 3
+Sample Input
+20 5
+13 1 11 10 6
+
+Sample Output
+6
+
+Example 4
+Sample Input
+90 17
+4 76 16 71 56 7 77 31 2 66 12 32 57 11 19 14 42
+
+Sample Output
+12
+"""
+
 # Bring this sucka down
 # the tubes are organized in a striaght line, not in a circle
 
