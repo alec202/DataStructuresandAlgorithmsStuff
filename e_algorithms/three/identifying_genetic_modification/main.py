@@ -1,31 +1,30 @@
 def main():
     num = int(input())
-    genes = [int(i) for i in input().split()]
-    start_prev = 0
-    end_prev = 10000000000
-    i = 0
-    start_res = None
-    end_res = None
-    while (start_res == None or end_res ==None) and i <= num//2:
-        if genes[i] > start_prev:
-            start_prev = genes[i]
-        else:
-            start_res = i
-        if genes[-(i+1)] < end_prev:
-            end_prev = genes[i]
-        else:
-            end_res = i
-
-        i+=1
-
-    if (end_res+start_res == num-1):
-        print('yes')
-        print('swap', start_res, start_res+1) 
-    elif genes[start_res:-end_res].sort() == genes[start_res:-end_res]:
+    sgenes = [int(i) for i in input().split()]
+    genes = [i for i in sgenes]
+    sgenes.sort()
+    wrongs = []
+    for i in range(num):
+        if genes[i] != sgenes[i]:
+            wrongs.append(i)
+    ##print(wrongs)
+    if len(wrongs) == 0:
         print("yes")
-        print("reverse", start_res, num-end_res)
-    if (end_res ==None and start_res == None):
+    elif len(wrongs) == 2:
         print("yes")
+        print("swap", wrongs[0]+1, wrongs[1]+1)
+    else:
+        chunk = genes[wrongs[0]: wrongs[-1]+1]
+        sorted_chunk = [j for j in chunk]
+        sorted_chunk.sort(reverse = True)
+        if chunk == sorted_chunk:
+            ##print(genes[wrongs[0]: wrongs[-1]+1])
+            ##print(genes[wrongs[0]: wrongs[-1]+1].sort())
+            print("yes")
+            print("reverse", wrongs[0]+1, wrongs[-1]+1)
+        else:
+            print('no')
+main()
 
              
 
