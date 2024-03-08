@@ -31,7 +31,7 @@ class Solution:
             for x in shorter_brick_lengths:
                 sum += self.table[i-x]
             self.table[i] = sum % 1000000009
-        Solution.output.append(self.table[self.length] % 1000000009)
+        Solution.output_arr.append(f"{self.table[length] % 1000000009}")
 
 if __name__ == "__main__":
     test_cases = int(input())
