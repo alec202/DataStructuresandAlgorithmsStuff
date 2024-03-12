@@ -17,7 +17,7 @@ int torpedoDrift(std::vector<int> nums, int target){
             }
         }
     }
-    return cache[target];
+    return cache[target] % 1000000009;
 }
 
 int main(int argc, char** argv){
