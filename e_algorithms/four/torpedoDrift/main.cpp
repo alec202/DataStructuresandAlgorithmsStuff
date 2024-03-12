@@ -3,13 +3,14 @@
 //
 #include <iostream>
 #include <cstring>
-#include <vector>
+#include <unordered_map>
 
 //
 int torpedoDrift(std::vector<int> nums, int target){
-    std::vector<int> cache(target + 1, 0);
+    std::unordered_map<int, int> cache;
     cache[0] = 1;
     for( size_t i = 1; i <= target; ++i){
+        cache[i] = 0;
         for (size_t j = 0; j < nums.size(); ++j){
             // have to debug this line below
             int sub = i - nums[j];
