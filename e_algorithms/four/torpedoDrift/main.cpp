@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstring>
 #include <unordered_map>
+#include <vector>
 
 //
 int torpedoDrift(std::vector<int> nums, int target){
