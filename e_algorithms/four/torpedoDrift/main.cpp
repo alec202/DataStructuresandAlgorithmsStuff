@@ -39,7 +39,9 @@ int main(int argc, char** argv){
             std::cin >> temp;
             bricks.push_back(temp);
         }
+
         output.push_back(torpedoDrift(bricks, targetLength));
+        bricks.clear();
         // We want to turn the input into tokens
 //        char* token = std::strtok(firstrowdata, " ");
     }
