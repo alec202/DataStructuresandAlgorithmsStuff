@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include <cstring>
+#include <vector>
 
 //
 int torpedoDrift(std::vector<int> nums, int target){
