@@ -2,14 +2,15 @@
 
 def torpedoDrift(nums, target):
     cache = {0: 1}
-    [cache.update() = 0 for i in range(1, target + 1)]
+    [cache.update({i: 0}) for i in range(1, target + 1)]
     # for i in range(1, target + 1):
     #     cache[i] = 0
 
     for i in range(1, target + 1):
         for num in nums:
-            if i - num >= 0:
-                cache[i] += cache[i - num]
+            sub = i - num
+            if sub >= 0:
+                cache[i] += cache[sub]
 
     return cache[target]
 
