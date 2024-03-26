@@ -27,6 +27,17 @@ def atlas_lift(contestants: int, secs: list[int]):
     # Now our dictionary is a key which is the number of seconds and the value is the number of contestants who can hold
     # the stone for that long
 
+    # Loop through dictionary and if the value is greater than 0 we want to subtract the amount and print
+    # out the number of contestants remaining
+    for i in range(1, 1_001):
+        if dict_vals[i] > 0:
+            contestants -= dict_vals[i]
+            # if number of contestants = 0, return out of loop
+            if contestants == 0:
+                return
+            print(contestants)
+
+
 
 
 
