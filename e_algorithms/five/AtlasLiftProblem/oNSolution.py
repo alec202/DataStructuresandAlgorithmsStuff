@@ -22,7 +22,7 @@ def atlas_lift(contestants: int, secs: list[int]):
     for i in range(1, 1_001):
         dict_vals[i] = 0
         # lets loop through the array, get the dictionary key the array element coresponds to and + 1
-    for i in range(0, len(secs)):
+    for i in range(0, contestants):
         dict_vals[secs[i]] += 1
     # Now our dictionary is a key which is the number of seconds and the value is the number of contestants who can hold
     # the stone for that long
