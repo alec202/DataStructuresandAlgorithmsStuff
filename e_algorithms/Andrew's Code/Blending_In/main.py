@@ -487,9 +487,6 @@ if __name__ == "__main__":
         #First we add the number to our first tree
         first_tree.insert(number)
 
-
-
-
         #Then we check if we need to adjust
         #If the element we added was supposed to be in the second tree move it
 
@@ -539,6 +536,7 @@ if __name__ == "__main__":
                 print(int(first_tree.maximum().get_key()))
             else:
                 print(int(second_tree.minimum().get_key()))
+
 
     number_of_tests = int(input())
     first_half_tree = RedBlackTree()
