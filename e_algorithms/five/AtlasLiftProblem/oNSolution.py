@@ -38,15 +38,6 @@ def atlas_lift(contestants: int, secs: list[int]):
             print(contestants)
 
 
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
     num_contestants = int(input("Number of contestants? "))
     seconds_per_contestant = input("seconds each contestant can last? ").split()
