@@ -9,3 +9,7 @@ print(ar)
 ar = ar.split()
 print(len(ar))
 print(ar)
+
+def apple():
+    for i in range(0, 10000):
+        print(i)
