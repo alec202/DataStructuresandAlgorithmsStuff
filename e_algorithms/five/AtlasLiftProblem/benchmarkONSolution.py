@@ -45,6 +45,8 @@ if __name__ == "__main__":
     import timeit
     contestant = 8
     sec = [1, 2, 3, 4, 3, 3, 2, 1]
+    # MAKE SURE YOU SPECIFY HOW MANY TIMES YOU WANT YOUR FUNCTION TO RUN FOR THE TIMING VALUE
+    # YOU DO THIS BY PUTTING number=X where X is the amount of times you want it to run.
     print(timeit.timeit("atlas_lift(contestant, sec)", globals=locals(), number=5))
     print()
 
