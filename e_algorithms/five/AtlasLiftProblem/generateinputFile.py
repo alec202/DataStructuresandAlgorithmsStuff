@@ -7,9 +7,10 @@ ar = "729 202 808 139 76 636 1000 163 435 6 140 457 720 669 634 40 41 344 595 26
 print()
 print(ar)
 ar = ar.split()
+ar = [int(val) for val in ar]
 print(len(ar))
 print(ar)
 
-def apple():
-    for i in range(0, 10000):
-        print(i)
+# def apple():
+#     for i in range(0, 10000):
+#         print(i)
