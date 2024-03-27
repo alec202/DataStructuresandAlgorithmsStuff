@@ -531,14 +531,14 @@ if __name__ == "__main__":
             sum = int(median_1) + int(median_2)
 
             if sum % 2 == 0:
-                final_output.append(int(sum/2))
+                final_output.append(str(int(sum/2)))
             else:
-                final_output.append(sum/2)
+                final_output.append(str(sum/2))
         else:
             if first_tree.size > second_tree.size:
-                final_output.append(int(first_tree.maximum().get_key()))
+                final_output.append(str(int(first_tree.maximum().get_key())))
             else:
-                final_output.append(int(second_tree.minimum().get_key()))
+                final_output.append(str(int(second_tree.minimum().get_key())))
 
 
     number_of_tests = int(input())
@@ -558,6 +558,8 @@ if __name__ == "__main__":
         else:
             add(number,first_half_tree,second_half_tree)
             find_median(first_half_tree,second_half_tree)
+
+    print("\n".join(final_output))
 
         # txt = "{size1}, {size2}, max of first = {max}, min of second {min}".format(size1 = first_half_tree.size, size2 = second_half_tree.size, max = first_half_tree.maximum().get_key(), min = second_half_tree.minimum().get_key())
         # print(txt)
