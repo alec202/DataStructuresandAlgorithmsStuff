@@ -15,7 +15,7 @@ The first contests fall after two seconds and we are left with four others; the 
 The above step is repeated until no opponents are left
 """
 
-def atlas_liftNSolution(contestant: int, sec: list[int]):
+def atlas_liftNSolution():
     # contestants = 8
     # secs = [1, 2, 3, 4, 3, 3, 2, 1]
     contestants = 6
@@ -42,7 +42,7 @@ def atlas_liftNSolution(contestant: int, sec: list[int]):
                 return
             print(contestants)
 
-def atlas_liftNSquaredSolution(contestant: int, sec: list[int]):
+def atlas_liftNSquaredSolution():
     contestants = 6
     secs = [1, 2, 3, 4, 3, 3, 2, 1]
     print(contestants)
@@ -61,12 +61,12 @@ if __name__ == "__main__":
     import timeit
     # MAKE SURE YOU SPECIFY HOW MANY TIMES YOU WANT YOUR FUNCTION TO RUN FOR THE TIMING VALUE
     # YOU DO THIS BY PUTTING number=X where X is the amount of times you want it to run.
-    contestant = 6
-    sec = [1, 2, 3, 4, 3, 3, 2, 1]
+    # contestant = 6
+    # sec = [1, 2, 3, 4, 3, 3, 2, 1]
 
     outputToWrite = []
     for i in range(0, 10):
-        outputToWrite.append(str((timeit.timeit("atlas_liftNSquaredSolution(contestant, sec)", globals=locals(), number=1))))
+        outputToWrite.append(str((timeit.timeit("atlas_liftNSquaredSolution()", globals=locals(), number=1))))
     # now that we got our time in seconds, lets write it to a file to compare
     with open("input01BenchmarkingResults", "w") as file:
         file.writelines("Original Solution Results:\n")
@@ -76,7 +76,7 @@ if __name__ == "__main__":
 
     outputToWrite = []
     for i in range(0, 10):
-        outputToWrite.append(str((timeit.timeit("atlas_liftNSolution(contestant, sec)", globals=locals(), number=1))))
+        outputToWrite.append(str((timeit.timeit("atlas_liftNSolution()", globals=locals(), number=1))))
 
     print(" ".join(outputToWrite))
     with open("input01BenchmarkingResults", "a") as file:
