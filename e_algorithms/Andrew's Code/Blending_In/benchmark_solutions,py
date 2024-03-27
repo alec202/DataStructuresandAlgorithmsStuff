@@ -11,13 +11,24 @@ cmd_optimized3 = "python main_optimized.py < input3.txt > output_optimized3.txt"
 cmd_optimized4 = "python main_optimized.py < input4.txt > output_optimized4.txt"
 
 main_time = timeit.timeit(lambda: subprocess.run(cmd_main1, shell=True), number=1)
-main_time += timeit.timeit(lambda: subprocess.run(cmd_main2, shell=True), number=1)
-main_time += timeit.timeit(lambda: subprocess.run(cmd_main3, shell=True), number=1)
-main_time += timeit.timeit(lambda: subprocess.run(cmd_main4, shell=True), number=1)
+main_time2 = timeit.timeit(lambda: subprocess.run(cmd_main2, shell=True), number=1)
+main_time3 = timeit.timeit(lambda: subprocess.run(cmd_main3, shell=True), number=1)
+main_time4 = timeit.timeit(lambda: subprocess.run(cmd_main4, shell=True), number=1)
 optimized_time = timeit.timeit(lambda: subprocess.run(cmd_optimized1, shell=True), number=1)
-optimized_time += timeit.timeit(lambda: subprocess.run(cmd_optimized2, shell=True), number=1)
-optimized_time += timeit.timeit(lambda: subprocess.run(cmd_optimized3, shell=True), number=1)
-optimized_time += timeit.timeit(lambda: subprocess.run(cmd_optimized4, shell=True), number=1)
+optimized_time2 = timeit.timeit(lambda: subprocess.run(cmd_optimized2, shell=True), number=1)
+optimized_time3 = timeit.timeit(lambda: subprocess.run(cmd_optimized3, shell=True), number=1)
+optimized_time4 = timeit.timeit(lambda: subprocess.run(cmd_optimized4, shell=True), number=1)
 
-print(f"Execution time for main.py: {main_time} seconds")
-print(f"Execution time for main_optimized.py: {optimized_time} seconds")
+print(f"Execution time for main.py input 1: {main_time} seconds")
+print(f"Execution time for main_optimized.py input 1: {optimized_time} seconds")
+
+print(f"Execution time for main.py input 2: {main_time2} seconds")
+print(f"Execution time for main_optimized.py input 2: {optimized_time2} seconds")
+
+print(f"Execution time for main.py input 3: {main_time3} seconds")
+print(f"Execution time for main_optimized.py input 3: {optimized_time3} seconds")
+
+print(f"Execution time for main.py input 4: {main_time4} seconds")
+print(f"Execution time for main_optimized.py input 4: {optimized_time4} seconds")
+
+
