@@ -1,11 +1,23 @@
 import timeit
 import subprocess
 
-cmd_main = "python main.py < input.txt > output_main.txt"
-cmd_optimized = "python main_optimized.py < input.txt > output_optimized.txt"
+cmd_main1 = "python main.py < input.txt > output_main.txt"
+cmd_main2 = "python main.py < input2.txt > output_main2.txt"
+cmd_main3 = "python main.py < input3.txt > output_main3.txt"
+cmd_main4 = "python main.py < input4.txt > output_main4.txt"
+cmd_optimized1 = "python main_optimized.py < input.txt > output_optimized.txt"
+cmd_optimized2 = "python main_optimized.py < input2.txt > output_optimized2.txt"
+cmd_optimized3 = "python main_optimized.py < input3.txt > output_optimized3.txt"
+cmd_optimized4 = "python main_optimized.py < input4.txt > output_optimized4.txt"
 
-main_time = timeit.timeit(lambda: subprocess.run(cmd_main, shell=True), number=1)
-optimized_time = timeit.timeit(lambda: subprocess.run(cmd_optimized, shell=True), number=1)
+main_time = timeit.timeit(lambda: subprocess.run(cmd_main1, shell=True), number=1)
+main_time += timeit.timeit(lambda: subprocess.run(cmd_main2, shell=True), number=1)
+main_time += timeit.timeit(lambda: subprocess.run(cmd_main3, shell=True), number=1)
+main_time += timeit.timeit(lambda: subprocess.run(cmd_main4, shell=True), number=1)
+optimized_time = timeit.timeit(lambda: subprocess.run(cmd_optimized1, shell=True), number=1)
+optimized_time += timeit.timeit(lambda: subprocess.run(cmd_optimized2, shell=True), number=1)
+optimized_time += timeit.timeit(lambda: subprocess.run(cmd_optimized3, shell=True), number=1)
+optimized_time += timeit.timeit(lambda: subprocess.run(cmd_optimized4, shell=True), number=1)
 
 print(f"Execution time for main.py: {main_time} seconds")
 print(f"Execution time for main_optimized.py: {optimized_time} seconds")
