@@ -1,4 +1,6 @@
 import itertools
+
+##right now it works but with strings and not binary. that is my next task
 def how_many_agents():
     n, k = input().split()
     n = int(n)
@@ -8,8 +10,10 @@ def how_many_agents():
     
     agents = []
     for i in range(n):
-        n = int(input())
+        q = input()
         skills = set(input().split())
+        if len(skills) == k:
+            return(1)
         ##check for and remove subsets:
         flag = False
         for agent in agents:
@@ -21,15 +25,16 @@ def how_many_agents():
         if not flag:
             agents.append(skills)
     ##now all agents are in the list
-    for i in range(1, len(agents)+1):
+    for i in range(2, len(agents)):
         combins = itertools.combinations(agents, i)
         for com in combins:
             found_skills = set()
             for group in com:
                 for skill in group:     
                     found_skills.add(skill)
-            if found_skills == all_skills:
+            if len(found_skills) == k:
                 return(i)
+    return(n)
     ##print(agents)
 print(how_many_agents())
 
