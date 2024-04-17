@@ -2,12 +2,6 @@ import time
 import heapq
 start_time = time.time()
 
-def union_sets(com):
-    final = set()
-    for group in com:
-        final.update(group)
-    return final
-
 def how_many_agents():
     n, k = map(int, input().split())
 
@@ -21,7 +15,9 @@ def how_many_agents():
         # listForHeap = [num_skills_possessed]
         # listForHeap += skills
         # listForHeap.append(_)
-        heapq.heappush(heaped_agents, data_on_skills)
+        thing_to_be_heaped = []
+        thing_to_be_heaped.append(data_on_skills)
+        heaped_agents = heapq.heapify(thing_to_be_heaped)
 
         # # Check for and remove subsets
         # flag = False
