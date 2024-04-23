@@ -1,8 +1,6 @@
 """
 Second solution, using merge sort idea to add
-numbers in order ascending. Meant to maintain
-order so don't need to use sort function.
-
+numbers in order ascending. Due this by using the bisect library.
 
 You are given two integers, m and k, and a stream of integers. You are tasked to implement a data structure
 that calculates the MKAverage for the stream.
@@ -20,43 +18,42 @@ MKAverage(int m, int k) Initializes the MKAverage object with an empty stream an
 void addElement(int num) Inserts a new element num into the stream.
 int calculateMKAverage() Calculates and returns the MKAverage for the current stream rounded down to the nearest integer.
 
-
 """
 
-
+from sortedcontainers import SortedList
+from statistics import mean
 class MKAverage:
-
     def __init__(self, m: int, k: int):
         self.stream = []
         self.m = m
         self.k = k
+        self.sortedNums = SortedList()
 
     def addElement(self, newNum: int) -> None:
-        # lets use the idea of the merge function from merge sort
-        newStream = []
-        for num in self.stream:
-            if num < newNum:
-                newStream.append(num)
-            else:
-                newStream.append(newNum)
-                newStream.append(num)
+        # if len(self.stream) < (2 * self.k):
+        #     self.stream.append(newNum)
+        # insert the new number into self.stream in a way that maintains sorted order.
+        self.stream.append(newNum)
+        self.sortedNums.add(newNum)
+        if len(self.sortedNums) > self.m:
+            valToRemove = self.stream.pop(0)
+            self.sortedNums.remove(valToRemove)
 
-        self.stream.append(num)
+
 
     def calculateMKAverage(self) -> int:
+        # if self.stream is less than m return -1.
         if len(self.stream) < self.m:
             return -1
+        # self.stream was bigger than m, so copy last m elements
         else:
-            indexToSlice = len(self.stream) - self.m
-            last_m_elements = self.stream[indexToSlice:]
-            sortedNums = sorted(last_m_elements)
-            upper_bound_k_elements = (len(sortedNums) - self.k)
-            numsForAvg = sortedNums[self.k: upper_bound_k_elements]
-            sum = 0
+            # self.sortedNums is already in sorted order
+            numsForAvg = self.sortedNums[self.k:-self.k]
+            return int(mean(numsForAvg))
 
-            for num in numsForAvg:
-                sum += num
-            return sum // len(numsForAvg)
+
+
+
 
 
 # Your MKAverage object will be instantiated and called as such:
@@ -79,4 +76,5 @@ obj.addElement(5)  # current elements are [3,1,10,5,5,5]
 print(obj.calculateMKAverage())  # The last 3 elements are [5,5,5].
 # After removing smallest and largest 1 element the container will be [5].
 # The average of [5] equals 5/1 = 5, return 5
+
 
