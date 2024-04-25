@@ -21,13 +21,16 @@ int calculateMKAverage() Calculates and returns the MKAverage for the current st
 """
 
 from sortedcontainers import SortedList
-from statistics import mean
+from collections import deque
+
 class MKAverage:
     def __init__(self, m: int, k: int):
-        self.stream = []
+        self.stream = deque()
         self.m = m
         self.k = k
         self.sortedNums = SortedList()
+        self.lower_k_sum = 0
+        self.upper_k_sum = 0
 
     def addElement(self, newNum: int) -> None:
         # if len(self.stream) < (2 * self.k):
@@ -36,10 +39,8 @@ class MKAverage:
         self.stream.append(newNum)
         self.sortedNums.add(newNum)
         if len(self.sortedNums) > self.m:
-            valToRemove = self.stream.pop(0)
+            valToRemove = self.stream.popleft()
             self.sortedNums.remove(valToRemove)
-
-
 
     def calculateMKAverage(self) -> int:
         # if self.stream is less than m return -1.

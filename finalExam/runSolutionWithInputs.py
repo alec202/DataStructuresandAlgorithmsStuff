@@ -2,7 +2,6 @@ import writeToFile
 from sortedList import MKAverage
 
 def runner(commands: list[str], nums: list[int]):
-
     for command in commands:
         if command == "MKAverage":
             nums_for_m_and_k = nums.pop(0)

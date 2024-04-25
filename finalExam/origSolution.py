@@ -43,7 +43,7 @@ class MKAverage:
             numsForAvg = sortedNums[self.k: upper_bound_k_elements]
 
             import statistics
-            return statistics.mean(numsForAvg)
+            return int(statistics.mean(numsForAvg))
 
 # Your MKAverage object will be instantiated and called as such:
 # obj = MKAverage(m, k)
